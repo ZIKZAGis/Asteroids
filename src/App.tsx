@@ -1,24 +1,36 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { FC, useEffect, useState } from 'react';
+import styles from './App.module.scss'
 
-function App() {
+const URL = 'https://api.nasa.gov'
+const API_KEY = 'iDzOJrUi4qXVnk7r204S0pGDrqhp9sERcCZZnEHz'
+
+type Data = {
+  url: string
+  date: string
+  title: string
+  explanation: string
+}
+
+const App: FC = () => {
+  const [data, setData] = useState<Data | null>(null)
+
+  useEffect(() => {
+    fetch(`${URL}/planetary/apod?api_key=${API_KEY}`).then(res => res.json()).then(data => setData(data))
+  }, [])
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={styles.app}>
+      <h1>
+        Nearest asteroids
+      </h1>
+      {data && 
+        <div>
+          <img src={data.url} alt="" />
+          <p>{data.date}</p>
+          <h2>{data.title}</h2>
+          <h3>{data.explanation}</h3>
+        </div>
+      }
     </div>
   );
 }
