@@ -21,7 +21,7 @@ const App: FC = () => {
   return (
     <div className={styles.app}>
       <h1>
-        Nearest asteroids
+        Asteroids
       </h1>
       {data && 
         <div>
