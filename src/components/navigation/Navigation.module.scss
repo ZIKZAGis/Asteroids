@@ -1,0 +1,24 @@
+@import 'src/variables.scss';
+
+.wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.links {
+    display: flex;
+}
+
+.link {
+    display: block;
+    color: $text-color;
+    padding: 30px 15px;
+    text-decoration: none;
+    transition: all ease .3s;
+
+    &:hover {
+        background-color: $gray;
+        color: $accent;
+    }
+}

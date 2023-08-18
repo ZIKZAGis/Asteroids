@@ -1,36 +1,39 @@
-import React, { FC, useEffect, useState } from 'react';
+import React, {useEffect, useState } from 'react';
 import styles from './App.module.scss'
+import Navigation from './components/navigation/Navigation';
+import { Route, Routes } from 'react-router';
+import Apod from './pages/apod_page/Apod';
+import AsteroidsPage from './pages/asteroids_page/AsteroidsPage';
+import { ApodType } from './types/types';
 
 const URL = 'https://api.nasa.gov'
 const API_KEY = 'iDzOJrUi4qXVnk7r204S0pGDrqhp9sERcCZZnEHz'
 
-type Data = {
-  url: string
-  date: string
-  title: string
-  explanation: string
-}
-
-const App: FC = () => {
-  const [data, setData] = useState<Data | null>(null)
+const App= () => {
+  const [apod, setApod] = useState<ApodType>({
+    date: '',
+    explanation: '',
+    hdurl: '',
+    media_type: '',
+    service_version: '',
+    title: '',
+    url: ''
+  })
 
   useEffect(() => {
-    fetch(`${URL}/planetary/apod?api_key=${API_KEY}`).then(res => res.json()).then(data => setData(data))
+    fetch(`${URL}/planetary/apod?api_key=${API_KEY}`).then(res => res.json())
+      .then(data => {
+        setApod(data)
+      })
   }, [])
   
   return (
     <div className={styles.app}>
-      <h1>
-        Asteroids
-      </h1>
-      {data && 
-        <div>
-          <img src={data.url} alt="" />
-          <p>{data.date}</p>
-          <h2>{data.title}</h2>
-          <h3>{data.explanation}</h3>
-        </div>
-      }
+      <Navigation/>
+      <Routes>
+        <Route path="/" element={<AsteroidsPage/>}/>
+        <Route path="/apod" element={<Apod data={apod}/>}/>
+      </Routes>
     </div>
   );
 }
