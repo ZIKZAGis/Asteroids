@@ -7,3 +7,7 @@ export interface ApodType {
     title: string
     url: string
 }
+
+export interface ErrorMessageProps {
+    error: string
+}
