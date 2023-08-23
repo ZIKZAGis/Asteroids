@@ -1,25 +1,37 @@
 import axios, {AxiosError} from 'axios'
 import { useState, useEffect } from "react"
 import { Asteroid } from '../types/types'
-
-const API_KEY = 'iDzOJrUi4qXVnk7r204S0pGDrqhp9sERcCZZnEHz'
+import { useAppSelector, useAppDispatch } from './appHooks'
+import { setLink } from '../slices/asteroidSlice'
 
 export const useAsteroids = () => {
     const [asteroids, setAsteroids] = useState<Asteroid[] | null> (null)
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState('')
 
-    // const [nextLink, setNextLink] = useState('')
-    // const [prevLink, setPrevLink] = useState('')
-    // const [pageInfo, setPageInfo] = useState('')
+    const dispatch = useAppDispatch()
+    const link = useAppSelector(state => state.asteroid.asteroidsLink)
+
+    const [nextLink, setNextLink] = useState('')
+    const [prevLink, setPrevLink] = useState('')
+
+    const nextLinkHandler = () => {
+        dispatch(setLink(nextLink))
+    }
+
+    const prevLinkHandler = () => {
+        dispatch(setLink(prevLink))
+    }
 
     const fetchAsteroids = async () => {
         try {
             setError('')
             setLoading(true)
-
-            const response = await axios.get(`https://api.nasa.gov/neo/rest/v1/neo/browse?api_key=${API_KEY}`)
+            const response = await axios.get(link)
             setAsteroids(response.data.near_earth_objects)
+            
+            response.data.links.next ? setNextLink(response.data.links.next) : setNextLink('')
+            response.data.links.prev ? setPrevLink(response.data.links.prev) : setPrevLink('')
             console.log(response.data)
             
             setLoading(false)
@@ -32,8 +44,9 @@ export const useAsteroids = () => {
 
     useEffect(() => {
         fetchAsteroids()
-    }, [])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [link])
 
-    return {asteroids, loading, error}
+    return {asteroids, loading, error, nextLink, prevLink, nextLinkHandler, prevLinkHandler}
 }
 
