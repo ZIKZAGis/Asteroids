@@ -14,8 +14,8 @@ const AsteroidsPage = () => {
                 </div>
             ))}
             {loading && <Loader/>}
-            {prevLink && <button type="button" onClick={nextLinkHandler}>Prev Page</button>}
-            {nextLink && <button type="button" onClick={prevLinkHandler}>Next Page</button>}
+            <button type="button" onClick={() => prevLinkHandler()} disabled={prevLink ? false : true}>Prev Page</button>
+            <button type="button" onClick={() => nextLinkHandler()} disabled={nextLink ? false : true}>Next Page</button>
         </>
     )
 }

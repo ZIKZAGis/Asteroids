@@ -10,7 +10,8 @@ export const useAsteroids = () => {
     const [error, setError] = useState('')
 
     const dispatch = useAppDispatch()
-    const link = useAppSelector(state => state.asteroid.asteroidsLink)
+    
+    let link = useAppSelector(state => state.asteroid.asteroidsLink)
 
     const [nextLink, setNextLink] = useState('')
     const [prevLink, setPrevLink] = useState('')
@@ -29,7 +30,7 @@ export const useAsteroids = () => {
             setLoading(true)
             const response = await axios.get(link)
             setAsteroids(response.data.near_earth_objects)
-            
+
             response.data.links.next ? setNextLink(response.data.links.next) : setNextLink('')
             response.data.links.prev ? setPrevLink(response.data.links.prev) : setPrevLink('')
             console.log(response.data)
