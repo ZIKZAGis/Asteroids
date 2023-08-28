@@ -8,7 +8,7 @@ export interface ApodType {
     url: string
 }
 
-type CloseApproachDataType = {
+export type CloseApproachDataType = {
     close_approach_date: string
     close_approach_date_full: string
     epoch_date_close_approach: number

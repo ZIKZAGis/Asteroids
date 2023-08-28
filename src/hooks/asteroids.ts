@@ -38,8 +38,9 @@ export const useAsteroids = () => {
             setLoading(false)
         } catch (e: unknown) {
             const error = e as AxiosError
-            setLoading(false)
             setError(error.message)
+        } finally {
+            setLoading(false)
         }
     }
 
