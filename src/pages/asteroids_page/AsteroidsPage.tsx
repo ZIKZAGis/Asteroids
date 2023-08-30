@@ -1,11 +1,27 @@
+import {useState} from 'react'
 import ErrorMessage from "../../components/error/ErrorMessage"
 import Loader from "../../components/loader/Loader"
 import { useAsteroids } from "../../hooks/asteroids"
 import {GiAsteroid} from 'react-icons/gi'
 import type { Asteroid, CloseApproachDataType } from "../../types/types"
+import { useAppSelector } from "../../hooks/appHooks"
 
 const AsteroidsPage = () => {
-    const {asteroids, loading, error, prevLink, nextLink, nextLinkHandler, prevLinkHandler} = useAsteroids()
+    const {
+        asteroids,
+        loading,
+        error,
+        prevLink,
+        nextLink,
+        nextLinkHandler,
+        prevLinkHandler,
+        toggleTrackHandler,
+        checkAdded
+    } = useAsteroids()
+
+    const [isOpen, setIsOpen] = useState(false)
+
+    const trackedAsteroids = useAppSelector(state => state.asteroid.traceable)
 
     const getNearest = (dateArr: CloseApproachDataType[]) => {
         const now = Date.now()
@@ -27,9 +43,24 @@ const AsteroidsPage = () => {
         else return 70
     }
 
+    const toggleHandler = () => {
+        setIsOpen(!isOpen)
+    }
+
     return (
         <>
             {error && <ErrorMessage error={error}/>}
+            <div>
+                <p>Tracked asteroids</p>
+                {trackedAsteroids.length >= 1 ? (trackedAsteroids.length) : 'nothing traceable'}
+                {isOpen && 
+                    <div>
+                        {trackedAsteroids.map(item => (
+                            <div key={item.id}>{item.name}</div>
+                        ))}
+                    </div>}
+                <button type="button" onClick={() => toggleHandler()}>{isOpen ?  'свернуть' : 'показать отслеживаемые'}</button>
+            </div>
             {asteroids && asteroids.map((asteroid) => (
                 <div key={asteroid.id} style={{padding: '10px'}}>
                     <div>{asteroid.name_limited ? asteroid.name_limited : asteroid.name}</div>
@@ -38,14 +69,15 @@ const AsteroidsPage = () => {
                         <GiAsteroid size={getAsteroidSize(getDiameter(asteroid))}/>
                     </div>
                     <div>
-                        Диаметр {getDiameter(asteroid)}м
+                        Diameter {getDiameter(asteroid)} m
                     </div>
                     <div>
-                        Ближайший подлёт астероида - {getNearest(asteroid.close_approach_data).date}
+                        Closest approach - {getNearest(asteroid.close_approach_data).date}
                     </div>
                     <div>
-                        Дистанция сближения - {getNearest(asteroid.close_approach_data).distance} km
+                        Approach distance - {getNearest(asteroid.close_approach_data).distance} km
                     </div>
+                    <button type="button" onClick={() => toggleTrackHandler(asteroid)}>{checkAdded(asteroid) ? 'Remove track' : 'Add track'}</button>
                 </div>
             ))}
             {loading && <Loader/>}
