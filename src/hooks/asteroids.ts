@@ -1,11 +1,11 @@
 import axios, {AxiosError} from 'axios'
 import { useState, useEffect } from "react"
-import { Asteroid } from '../types/types'
+import { AsteroidType } from '../types/types'
 import { useAppSelector, useAppDispatch } from './appHooks'
 import { setLink, addTrack, removeTrack } from '../slices/asteroidSlice'
 
 export const useAsteroids = () => {
-    const [asteroids, setAsteroids] = useState<Asteroid[] | null> (null)
+    const [asteroids, setAsteroids] = useState<AsteroidType[] | null> (null)
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState('')
     
@@ -15,7 +15,7 @@ export const useAsteroids = () => {
     const link = useAppSelector(state => state.asteroid.asteroidsLink)
     const trackedAsteroids = useAppSelector(state => state.asteroid.traceable)
 
-    const checkAdded = (item: Asteroid): boolean => {
+    const checkAdded = (item: AsteroidType): boolean => {
         if (trackedAsteroids.find(i => i.id === item.id)) {
             return true
         } 
@@ -33,7 +33,7 @@ export const useAsteroids = () => {
         dispatch(setLink(prevLink))
     }
 
-    const toggleTrackHandler = (item: Asteroid) => {
+    const toggleTrackHandler = (item: AsteroidType) => {
         if (checkAdded(item)) {
             dispatch(removeTrack(item.id))
         } else {

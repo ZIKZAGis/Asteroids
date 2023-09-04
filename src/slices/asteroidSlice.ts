@@ -1,9 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit"
-import { Asteroid } from "../types/types"
+import { AsteroidType } from "../types/types"
 
 const initialState = {
     asteroidsLink: 'https://api.nasa.gov/neo/rest/v1/neo/browse?api_key=iDzOJrUi4qXVnk7r204S0pGDrqhp9sERcCZZnEHz' as string,
-    traceable: [] as Asteroid[]
+    traceable: [] as AsteroidType[]
 }
 
 export const asteroidSlice = createSlice({

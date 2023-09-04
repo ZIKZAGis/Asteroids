@@ -3,7 +3,7 @@ import ErrorMessage from "../../components/error/ErrorMessage"
 import Loader from "../../components/loader/Loader"
 import { useAsteroids } from "../../hooks/asteroids"
 import {GiAsteroid} from 'react-icons/gi'
-import type { Asteroid, CloseApproachDataType } from "../../types/types"
+import type { AsteroidType, CloseApproachDataType } from "../../types/types"
 import { useAppSelector } from "../../hooks/appHooks"
 
 const AsteroidsPage = () => {
@@ -31,7 +31,7 @@ const AsteroidsPage = () => {
         return {date, distance}
     }
 
-    const getDiameter = (asteroid: Asteroid) => {
+    const getDiameter = (asteroid: AsteroidType) => {
         return Math.round((asteroid.estimated_diameter.meters.estimated_diameter_min + asteroid.estimated_diameter.meters.estimated_diameter_min) / 2) 
     }
 
@@ -59,7 +59,7 @@ const AsteroidsPage = () => {
                             <div key={item.id}>{item.name}</div>
                         ))}
                     </div>}
-                <button type="button" onClick={() => toggleHandler()}>{isOpen ?  'свернуть' : 'показать отслеживаемые'}</button>
+                {trackedAsteroids.length >= 1 && <button type="button" onClick={() => toggleHandler()}>{isOpen ?  'свернуть' : 'показать отслеживаемые'}</button>}
             </div>
             {asteroids && asteroids.map((asteroid) => (
                 <div key={asteroid.id} style={{padding: '10px'}}>

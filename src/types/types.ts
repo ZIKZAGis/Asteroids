@@ -79,7 +79,7 @@ type OrbitalDataType = {
     semi_major_axis: string
 }
 
-export interface Asteroid {
+export interface AsteroidType {
     absolute_magnitude_h: number
     close_approach_data: CloseApproachDataType[]
     designation: string
