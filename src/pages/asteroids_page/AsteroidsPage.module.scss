@@ -1,0 +1,24 @@
+@import 'src/variables.scss';
+
+.wrapper {
+    margin: 0 auto;
+    max-width: 1920px;
+    min-width: 320px;
+    padding: 0 50px;
+}
+
+.asteroids {
+    text-align: center;
+}
+
+@media (max-width: ($tablet - 1)) {
+    .wrapper {
+        padding: 0 30px;
+    }
+}
+
+@media (max-width: ($mobile - 1)) {
+    .wrapper {
+        padding: 0 20px;
+    }
+}

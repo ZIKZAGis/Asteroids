@@ -5,6 +5,7 @@ import { useAsteroids } from "../../hooks/asteroids"
 import { useAppSelector } from "../../hooks/appHooks"
 import Asteroid from '../../components/asteroid/Asteroid'
 import Button from '../../components/button/Button'
+import styles from './AsteroidsPage.module.scss'
 
 const AsteroidsPage = () => {
     const {
@@ -28,7 +29,7 @@ const AsteroidsPage = () => {
     }
 
     return (
-        <>
+        <div className={styles.wrapper}>
             {error && <ErrorMessage error={error}/>}
             <div>
                 <p>Tracked asteroids</p>
@@ -43,19 +44,21 @@ const AsteroidsPage = () => {
                     <Button fn={toggleHandler} description={isOpen ?  'Свернуть' : 'Показать отслеживаемые'}/>
                 }
             </div>
-            {asteroids && asteroids.map((asteroid) => (
-                <Asteroid 
-                    asteroid={asteroid} 
-                    toggle={toggleTrackHandler} 
-                    check={checkAdded}
-                />
-            ))}
+            <div className={styles.asteroids}>
+                {asteroids && asteroids.map((asteroid) => (
+                    <Asteroid 
+                        asteroid={asteroid} 
+                        toggle={toggleTrackHandler} 
+                        check={checkAdded}
+                    />
+                ))}
+            </div>
             {loading && <Loader/>}
             <div>
                 <Button fn={prevLinkHandler} disabled={prevLink ? false : true} description='Назад'/>
                 <Button fn={nextLinkHandler} disabled={nextLink ? false : true} description='Вперёд'/>
             </div>
-        </>
+        </div>
     )
 }
 

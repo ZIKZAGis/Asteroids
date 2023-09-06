@@ -31,7 +31,7 @@ const getNearest = (dateArr: CloseApproachDataType[]) => {
 const Asteroid = ({asteroid, toggle, check}: PropsType) => {
     return (
         <>
-            <div key={asteroid.id} style={{padding: '10px'}}>
+            <div key={asteroid.id}>
                 <div>{asteroid.name_limited ? asteroid.name_limited : asteroid.name}</div>
                 <div style={asteroid.is_potentially_hazardous_asteroid ? {color: 'red'} : {color: 'green'}}>{asteroid.is_potentially_hazardous_asteroid ? 'опасный': 'безопасный'}</div>
                 <div>

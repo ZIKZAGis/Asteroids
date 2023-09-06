@@ -1,23 +1,33 @@
 import Loader from "../../components/loader/Loader"
 import { useApod } from "../../hooks/apod"
 import ErrorMessage from "../../components/error/ErrorMessage"
+import styles from './Apod.module.scss'
 
 const Apod = () => {
     const {apod, error, loading} = useApod()
 
+    console.log(apod)
+
     return (
-        <>
+        <div className={styles.container}>
             {loading && <Loader/>}
             {error && <ErrorMessage error={error}/>}
             {apod && 
-                <div>
-                    <img src={apod.url} alt="" />
-                    <p>{apod.date}</p>
+                <div className={styles.wrapper}>
+                    <div className={styles.media}>
+                        {apod.media_type === 'video' ? 
+                            // eslint-disable-next-line jsx-a11y/iframe-has-title
+                            <iframe width='600'height='400' src={apod.url} frameBorder='0' allowFullScreen/>
+                            :
+                            <img src={apod.url} alt="Apod" />
+                        }
+                    </div>
+                    <span> Date: {apod.date}</span>
                     <h2>{apod.title}</h2>
-                    <h3>{apod.explanation}</h3>
+                    <p>{apod.explanation}</p>
                 </div>
             }
-        </>
+        </div>
     )
 }
 
