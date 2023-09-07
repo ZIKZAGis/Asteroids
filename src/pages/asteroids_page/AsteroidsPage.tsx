@@ -6,6 +6,7 @@ import { useAppSelector } from "../../hooks/appHooks"
 import Asteroid from '../../components/asteroid/Asteroid'
 import Button from '../../components/button/Button'
 import styles from './AsteroidsPage.module.scss'
+import earth from './../../earth.webp'
 
 const AsteroidsPage = () => {
     const {
@@ -30,6 +31,11 @@ const AsteroidsPage = () => {
 
     return (
         <div className={styles.wrapper}>
+            <div className={styles.earth}>
+                <div className={styles.img_wrapper}>
+                    <img src={earth} alt="" aria-hidden/>
+                </div>
+            </div>
             {error && <ErrorMessage error={error}/>}
             <div>
                 <p>Tracked asteroids</p>

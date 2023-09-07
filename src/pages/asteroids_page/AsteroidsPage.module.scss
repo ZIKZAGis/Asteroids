@@ -1,14 +1,59 @@
 @import 'src/variables.scss';
 
 .wrapper {
+    position: relative;
     margin: 0 auto;
     max-width: 1920px;
     min-width: 320px;
     padding: 0 50px;
+    border: 1px solid green;
+
+}
+
+@keyframes rotation {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+}
+
+.earth {
+    position: fixed;
+    left: 0;
+    top: 50%;
+    transform: translate(0, -50%);
+    width: 20%;
+    height: 50vh;
+    z-index: 0;
+    border: 1px solid red;
+
+    .img_wrapper {
+        position: absolute;
+        width: auto;
+        height: 100%;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        border: 1px solid blue;
+    }
+
+    img {
+        width: auto;
+        height: 100%;
+        display: block;
+        animation-name: rotation;
+        animation-duration: 270s;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear; 
+    }
 }
 
 .asteroids {
+    position: relative;
     text-align: center;
+    order: 1;
 }
 
 @media (max-width: ($tablet - 1)) {
