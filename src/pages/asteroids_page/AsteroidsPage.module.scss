@@ -6,8 +6,6 @@
     max-width: 1920px;
     min-width: 320px;
     padding: 0 50px;
-    border: 1px solid green;
-
 }
 
 @keyframes rotation {
@@ -21,13 +19,12 @@
 
 .earth {
     position: fixed;
-    left: 0;
+    left: 10%;
     top: 50%;
     transform: translate(0, -50%);
     width: 20%;
-    height: 50vh;
+    height: 80vh;
     z-index: 0;
-    border: 1px solid red;
 
     .img_wrapper {
         position: absolute;
@@ -36,7 +33,6 @@
         left: 50%;
         top: 50%;
         transform: translate(-50%, -50%);
-        border: 1px solid blue;
     }
 
     img {
@@ -56,9 +52,19 @@
     order: 1;
 }
 
+@media (max-width: (1920px)) {
+    .earth {
+        left: 0;
+    }
+}
+
 @media (max-width: ($tablet - 1)) {
     .wrapper {
         padding: 0 30px;
+    }
+    
+    .earth {
+        left: -10%;
     }
 }
 
@@ -66,4 +72,9 @@
     .wrapper {
         padding: 0 20px;
     }
+
+    .earth {
+        left: -50%;
+    }
 }
+

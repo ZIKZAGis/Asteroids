@@ -1,5 +1,8 @@
 import { AsteroidType, CloseApproachDataType } from "../../types/types"
 import { GiAsteroid } from "react-icons/gi"
+import styles from './Asteroid.module.scss'
+import {CgDanger} from 'react-icons/cg'
+import {AiOutlineSmile} from 'react-icons/ai'
 
 type PropsType = {
     asteroid: AsteroidType
@@ -27,13 +30,12 @@ const getNearest = (dateArr: CloseApproachDataType[]) => {
     return {date, distance}
 }
 
-
 const Asteroid = ({asteroid, toggle, check}: PropsType) => {
     return (
         <>
-            <div key={asteroid.id}>
+            <div key={asteroid.id} className={styles.wrapper}>
                 <div>{asteroid.name_limited ? asteroid.name_limited : asteroid.name}</div>
-                <div style={asteroid.is_potentially_hazardous_asteroid ? {color: 'red'} : {color: 'green'}}>{asteroid.is_potentially_hazardous_asteroid ? 'опасный': 'безопасный'}</div>
+
                 <div>
                     <GiAsteroid size={getAsteroidSize(getDiameter(asteroid))}/>
                 </div>
@@ -46,7 +48,20 @@ const Asteroid = ({asteroid, toggle, check}: PropsType) => {
                 <div>
                     Approach distance - {getNearest(asteroid.close_approach_data).distance} km
                 </div>
-                <button type="button" onClick={() => toggle(asteroid)}>{check(asteroid) ? 'Remove track' : 'Add track'}</button>
+                <div>
+                    <button type="button" onClick={() => toggle(asteroid)}>{check(asteroid) ? 'Remove track' : 'Add track'}</button>
+                    <div style={asteroid.is_potentially_hazardous_asteroid ? {color: 'red'} : {color: 'green'}}>
+                        {asteroid.is_potentially_hazardous_asteroid ? 
+                            <div>
+                                Dangerous <CgDanger/>
+                            </div>
+                            :
+                            <div>
+                            Not dangerous <AiOutlineSmile/>
+                            </div>
+                        }
+                    </div>
+                </div>
             </div>
         </>
     )

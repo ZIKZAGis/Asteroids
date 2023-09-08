@@ -1,0 +1,10 @@
+@import 'src/variables.scss';
+
+.wrapper {
+    border: 1px solid $accent;
+    width: fit-content;
+    margin: 0 auto 20px auto;
+    padding: 10px 20px;
+    border-radius: 20px;
+    background-color: rgba($gray, 0.2);
+}
