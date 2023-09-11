@@ -1,10 +1,120 @@
 @import 'src/variables.scss';
 
 .wrapper {
-    border: 1px solid $accent;
-    width: fit-content;
-    margin: 0 auto 20px auto;
-    padding: 10px 20px;
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 15px;
     border-radius: 20px;
-    background-color: rgba($gray, 0.2);
+    background-color: rgba($bg-color, 0.6);
+}
+
+.name {
+    font-size: 24px;
+    line-height: 24px;
+    font-weight: bold;
+    color: $accent;
+    margin-bottom: 5px;
+}
+
+.data {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: center;
+    padding: 10px 0;
+}
+
+.distance {
+    p {
+        margin: 10px 0;
+    }
+
+    .arrow {
+        position: relative;
+        width: 100%;
+        height: 3px;
+        background-color: $accent;
+    
+        .right,
+        .left {
+            color: $accent;
+            position: absolute;
+            font-size: 22px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        
+        .right {
+            right: -11px;
+        }
+    
+        .left {
+            left: -11px;
+        }
+    }
+}
+
+.diameter {
+    display: flex;
+    align-items: center;
+
+    p {
+        margin: 10px 0;
+    }
+}
+
+.diameter_icon {
+    position: relative;
+    width: 25px;
+    height: 25px;
+    border: 2px solid $text-color;
+    border-radius: 50%;
+    margin-right: 10px;
+
+    &::after {
+        position: absolute;
+        content: '';
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%) rotate(45deg);
+        width: 2px;
+        height: 40px;
+        background-color: $text-color;
+    }
+}
+
+.date {
+    width: fit-content;
+    
+    p {
+        margin-top: 0;
+        margin-bottom: 10px;
+        font-size: 16px;
+        font-weight: bold;
+    }
+}
+
+.bottom {
+    display: flex;
+    align-items: center;
+
+    .track_button {
+        border: none;
+        border-radius: 10px;
+        color: $text-color;
+        background-color: $gray;
+        text-transform: uppercase;
+        padding: 10px;
+        margin-right: auto;
+    }
+
+    .danger {
+        div {
+            display: flex;
+            align-items: center;
+        }
+        svg {
+            margin-left: 5px;
+            font-size: 18px;
+        }
+    }
 }

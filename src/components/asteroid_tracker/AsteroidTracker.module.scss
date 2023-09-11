@@ -1,0 +1,20 @@
+@import 'src/variables.scss';
+
+.wrapper {
+    position: relative;
+}
+
+.wrapper > div {
+    position: absolute;
+    top: 20px;
+    right: 50px;
+}
+
+.wrapper > div > div {
+    z-index: 1;
+    text-align: center;
+    width: 200px;
+    position: fixed;
+    transform: translateX(-100%);
+    border: 1px solid $accent;
+}

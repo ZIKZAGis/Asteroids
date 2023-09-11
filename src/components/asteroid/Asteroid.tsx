@@ -3,6 +3,7 @@ import { GiAsteroid } from "react-icons/gi"
 import styles from './Asteroid.module.scss'
 import {CgDanger} from 'react-icons/cg'
 import {AiOutlineSmile} from 'react-icons/ai'
+import {VscTriangleLeft, VscTriangleRight} from 'react-icons/vsc'
 
 type PropsType = {
     asteroid: AsteroidType
@@ -34,30 +35,37 @@ const Asteroid = ({asteroid, toggle, check}: PropsType) => {
     return (
         <>
             <div key={asteroid.id} className={styles.wrapper}>
-                <div>{asteroid.name_limited ? asteroid.name_limited : asteroid.name}</div>
+                <div className={styles.name}>{asteroid.name_limited ? asteroid.name_limited : asteroid.name}</div>
+                <div className={styles.data}>
+                    <div className={styles.distance}>
+                        <p>{getNearest(asteroid.close_approach_data).distance} km</p>
+                        <div className={styles.arrow}>
+                            <VscTriangleLeft className={styles.left}/>
+                            <VscTriangleRight className={styles.right}/>
+                        </div>
+                    </div>
+                    <div className={styles.size}>
+                        <GiAsteroid size={getAsteroidSize(getDiameter(asteroid))}/>
+                    </div>
+                    <div className={styles.diameter}>
+                        <div className={styles.diameter_icon}></div>
+                        <p>{getDiameter(asteroid)} m</p>
+                    </div>
+                </div>
+                <div className={styles.date}>
+                    <p>Closest approach - {getNearest(asteroid.close_approach_data).date}</p>
+                </div>
 
-                <div>
-                    <GiAsteroid size={getAsteroidSize(getDiameter(asteroid))}/>
-                </div>
-                <div>
-                    Diameter {getDiameter(asteroid)} m
-                </div>
-                <div>
-                    Closest approach - {getNearest(asteroid.close_approach_data).date}
-                </div>
-                <div>
-                    Approach distance - {getNearest(asteroid.close_approach_data).distance} km
-                </div>
-                <div>
-                    <button type="button" onClick={() => toggle(asteroid)}>{check(asteroid) ? 'Remove track' : 'Add track'}</button>
-                    <div style={asteroid.is_potentially_hazardous_asteroid ? {color: 'red'} : {color: 'green'}}>
+                <div className={styles.bottom}>
+                    <button className={styles.track_button} type="button" onClick={() => toggle(asteroid)}>{check(asteroid) ? 'Remove track' : 'Add track'}</button>
+                    <div className={styles.danger} style={asteroid.is_potentially_hazardous_asteroid ? {color: 'red', fontWeight: 'bold'} : {color: 'white'}}>
                         {asteroid.is_potentially_hazardous_asteroid ? 
                             <div>
-                                Dangerous <CgDanger/>
+                                Dangerous  <CgDanger/>
                             </div>
                             :
                             <div>
-                            Not dangerous <AiOutlineSmile/>
+                                Not dangerous  <AiOutlineSmile/>
                             </div>
                         }
                     </div>

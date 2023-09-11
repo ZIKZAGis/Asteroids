@@ -1,12 +1,11 @@
-import {useState} from 'react'
 import ErrorMessage from "../../components/error/ErrorMessage"
 import Loader from "../../components/loader/Loader"
 import { useAsteroids } from "../../hooks/asteroids"
-import { useAppSelector } from "../../hooks/appHooks"
 import Asteroid from '../../components/asteroid/Asteroid'
 import Button from '../../components/button/Button'
 import styles from './AsteroidsPage.module.scss'
 import earth from './../../earth.webp'
+import AsteroidTracker from '../../components/asteroid_tracker/AsteroidTracker'
 
 const AsteroidsPage = () => {
     const {
@@ -21,14 +20,6 @@ const AsteroidsPage = () => {
         checkAdded
     } = useAsteroids()
 
-    const [isOpen, setIsOpen] = useState(false)
-
-    const trackedAsteroids = useAppSelector(state => state.asteroid.traceable)
-
-    const toggleHandler = () => {
-        setIsOpen(!isOpen)
-    }
-
     return (
         <div className={styles.wrapper}>
             <div className={styles.earth}>
@@ -37,19 +28,7 @@ const AsteroidsPage = () => {
                 </div>
             </div>
             {error && <ErrorMessage error={error}/>}
-            <div>
-                <p>Tracked asteroids</p>
-                {trackedAsteroids.length >= 1 ? (trackedAsteroids.length) : 'nothing traceable'}
-                {isOpen && 
-                    <div>
-                        {trackedAsteroids.map(item => (
-                            <div key={item.id}>{item.name}</div>
-                        ))}
-                    </div>}
-                {trackedAsteroids.length >= 1 && 
-                    <Button fn={toggleHandler} description={isOpen ?  'Свернуть' : 'Показать отслеживаемые'}/>
-                }
-            </div>
+            <AsteroidTracker/>
             <div className={styles.asteroids}>
                 {asteroids && asteroids.map((asteroid) => (
                     <Asteroid 
