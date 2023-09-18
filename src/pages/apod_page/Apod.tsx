@@ -10,6 +10,7 @@ const Apod = () => {
 
     return (
         <div className={styles.container}>
+            <h1 className="visually-hidden">Astronomy Picture of the Day</h1>
             {loading && <Loader/>}
             {error && <ErrorMessage error={error}/>}
             {apod && 

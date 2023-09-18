@@ -8,15 +8,6 @@
     padding: 0 50px;
 }
 
-@keyframes rotation {
-    from {
-      transform: rotate(0deg);
-    }
-    to {
-      transform: rotate(360deg);
-    }
-}
-
 .earth {
     position: fixed;
     left: 10%;
@@ -79,6 +70,15 @@
 
     .earth {
         left: -50%;
+    }
+}
+
+@keyframes rotation {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
     }
 }
 

@@ -2,8 +2,8 @@ import { AsteroidType, CloseApproachDataType } from "../../types/types"
 import { GiAsteroid } from "react-icons/gi"
 import styles from './Asteroid.module.scss'
 import {CgDanger} from 'react-icons/cg'
-import {AiOutlineSmile} from 'react-icons/ai'
 import {VscTriangleLeft, VscTriangleRight} from 'react-icons/vsc'
+import Button from "../button/Button"
 
 type PropsType = {
     asteroid: AsteroidType
@@ -57,15 +57,15 @@ const Asteroid = ({asteroid, toggle, check}: PropsType) => {
                 </div>
 
                 <div className={styles.bottom}>
-                    <button className={styles.track_button} type="button" onClick={() => toggle(asteroid)}>{check(asteroid) ? 'Remove track' : 'Add track'}</button>
-                    <div className={styles.danger} style={asteroid.is_potentially_hazardous_asteroid ? {color: 'red', fontWeight: 'bold'} : {color: 'white'}}>
+                    <Button fn={() => toggle(asteroid)} description={check(asteroid) ? 'Remove track' : 'Add track'}/>
+                    <div className={styles.danger} style={asteroid.is_potentially_hazardous_asteroid ? {color: 'red', fontWeight: 'bold'} : {color: 'white', opacity: 0.2}}>
                         {asteroid.is_potentially_hazardous_asteroid ? 
                             <div>
                                 Dangerous  <CgDanger/>
                             </div>
                             :
                             <div>
-                                Not dangerous  <AiOutlineSmile/>
+                                Not dangerous
                             </div>
                         }
                     </div>

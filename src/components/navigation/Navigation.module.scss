@@ -1,12 +1,48 @@
 @import 'src/variables.scss';
 
 .wrapper {
+    position: relative;
+    z-index: 2;
     display: flex;
     max-width: 1920px;
     justify-content: space-between;
     align-items: center;
     margin: 0 auto;
     padding: 0 50px;
+
+    > a {
+        display: flex;
+        align-items: center;
+
+        span {
+            color: $text-color;
+            margin-bottom: 0;
+            transition: $animation;
+        }
+
+        svg {
+            margin-right: 10px;
+            width: 80px;
+            height: auto;
+        }
+
+        &:hover {
+            span {
+                color: $accent;
+            }
+        }
+    }
+
+    > a, 
+    .link {
+        color: $text-color;
+        text-decoration: none;
+        transition: $animation;
+
+        &:hover {
+            color: $accent;
+        }
+    }
 }
 
 .links {
@@ -15,13 +51,6 @@
 
 .link {
     display: block;
-    color: $text-color;
+    font-weight: bold;
     padding: 30px 15px;
-    text-decoration: none;
-    transition: all ease .3s;
-
-    &:hover {
-        background-color: $gray;
-        color: $accent;
-    }
 }

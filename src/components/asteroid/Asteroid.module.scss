@@ -1,11 +1,11 @@
 @import 'src/variables.scss';
 
 .wrapper {
-    width: 100%;
+    width: 450px;
     margin-bottom: 10px;
     padding: 15px;
     border-radius: 20px;
-    background-color: rgba($bg-color, 0.6);
+    background-color: rgba($gray, 0.4);
 }
 
 .name {
@@ -97,7 +97,7 @@
     display: flex;
     align-items: center;
 
-    .track_button {
+    button {
         border: none;
         border-radius: 10px;
         color: $text-color;

@@ -14,6 +14,9 @@
     z-index: 1;
     text-align: center;
     width: 200px;
+    height: fit-content;
+    max-height: 70%;
+    overflow-y: scroll;
     position: fixed;
     transform: translateX(-100%);
     border: 1px solid $accent;

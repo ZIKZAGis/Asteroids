@@ -22,6 +22,7 @@ const AsteroidsPage = () => {
 
     return (
         <div className={styles.wrapper}>
+            <h1 className="visually-hidden">Asteroids</h1>
             <div className={styles.earth}>
                 <div className={styles.img_wrapper}>
                     <img src={earth} alt="" aria-hidden/>

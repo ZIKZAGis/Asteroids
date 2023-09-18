@@ -15,3 +15,8 @@ code {
 ::-webkit-scrollbar {
   width: 0;
 }
+
+.visually-hidden {
+  position: fixed;
+  transform: scale(0);
+}

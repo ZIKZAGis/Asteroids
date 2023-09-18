@@ -1,3 +1,5 @@
+import styles from './Button.module.scss'
+
 type PropsType = {
     fn: () => void
     description: string
@@ -6,7 +8,7 @@ type PropsType = {
 
 const Button = ({fn, description, disabled = false}: PropsType) => {
     return (
-        <button type='button' onClick={() => fn()} disabled={disabled}>{description}</button>
+        <button className={styles.button} type='button' onClick={() => fn()} disabled={disabled}>{description}</button>
     )
 }
 
