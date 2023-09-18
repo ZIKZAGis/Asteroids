@@ -40,9 +40,9 @@ const AsteroidsPage = () => {
                 ))}
             </div>
             {loading && <Loader/>}
-            <div>
-                <Button fn={prevLinkHandler} disabled={prevLink ? false : true} description='Назад'/>
-                <Button fn={nextLinkHandler} disabled={nextLink ? false : true} description='Вперёд'/>
+            <div className={styles.nav_button}>
+                <Button fn={prevLinkHandler} disabled={prevLink ? false : true} description='Prev'/>
+                <Button fn={nextLinkHandler} disabled={nextLink ? false : true} description='Next'/>
             </div>
         </div>
     )

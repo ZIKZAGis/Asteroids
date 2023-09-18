@@ -47,6 +47,59 @@
     order: 1;
 }
 
+.nav_button {
+    position: fixed;
+    width: 500px;
+    z-index: 0;
+    left: 50%;
+    bottom: 50px;
+    transform: translate(-50%, 0);
+
+    button {
+        position: absolute;
+        top: 0;
+        z-index: 2;
+        border: none;
+        font-size: 24px;
+        padding: 5px 15px;
+        background-color: $gray;
+        color: $text-color;
+        transition: $animation;
+
+        &:hover {
+            color: $accent;
+            background-color: darken($gray, 5);
+        }
+
+        &:disabled {
+            opacity: 0.3;
+        }
+
+        &:disabled:hover {
+            color: $text-color;
+            background-color: $gray;
+        }
+    }
+
+    button:first-child {
+        left: -85px;
+        border-radius: 20px 5px 5px 20px;
+
+        &:hover {
+            left: -90px;
+        }
+    }
+
+    button:last-child {
+        right: -85px;
+        border-radius: 5px 20px 20px 5px;
+
+        &:hover {
+            right: -90px;
+        }
+    }
+}
+
 @media (max-width: (1920px)) {
     .earth {
         left: 0;

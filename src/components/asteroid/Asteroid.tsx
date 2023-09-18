@@ -3,7 +3,6 @@ import { GiAsteroid } from "react-icons/gi"
 import styles from './Asteroid.module.scss'
 import {CgDanger} from 'react-icons/cg'
 import {VscTriangleLeft, VscTriangleRight} from 'react-icons/vsc'
-import Button from "../button/Button"
 
 type PropsType = {
     asteroid: AsteroidType
@@ -57,7 +56,10 @@ const Asteroid = ({asteroid, toggle, check}: PropsType) => {
                 </div>
 
                 <div className={styles.bottom}>
-                    <Button fn={() => toggle(asteroid)} description={check(asteroid) ? 'Remove track' : 'Add track'}/>
+                    <button 
+                        onClick={() => toggle(asteroid)}
+                        style={check(asteroid) ? {backgroundColor: 'rgb(37,15,0)', opacity: '0.8'} : {backgroundColor: '#232526'}}
+                    >{check(asteroid) ? 'Remove track' : 'Add track'}</button>
                     <div className={styles.danger} style={asteroid.is_potentially_hazardous_asteroid ? {color: 'red', fontWeight: 'bold'} : {color: 'white', opacity: 0.2}}>
                         {asteroid.is_potentially_hazardous_asteroid ? 
                             <div>
