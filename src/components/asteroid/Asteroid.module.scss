@@ -21,6 +21,7 @@
     grid-template-columns: repeat(3, 1fr);
     align-items: center;
     padding: 10px 0;
+    margin-bottom: 10px;
 }
 
 .distance {
@@ -56,6 +57,7 @@
 .diameter {
     display: flex;
     align-items: center;
+    margin-left: auto;
 
     p {
         margin: 10px 0;
@@ -84,17 +86,18 @@
 
 .date {
     width: fit-content;
+    margin-bottom: 20px;
     
     p {
-        margin-top: 0;
-        margin-bottom: 10px;
+        margin: 0;
         font-size: 16px;
-        font-weight: bold;
+        color: $accent;
     }
 }
 
 .bottom {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     align-items: center;
 
     button {
@@ -102,8 +105,10 @@
         border-radius: 10px;
         color: $text-color;
         background-color: $gray;
+        font-size: 14px;
         text-transform: uppercase;
         padding: 10px;
+        width: fit-content;
         margin-right: auto;
         transition: $animation;
         cursor: pointer;
@@ -113,7 +118,27 @@
         }
     }
 
+    a {
+        margin: 0 auto;
+        width: fit-content;
+        color: $text-color;
+        background-color: $gray;
+        border-radius: 10px;
+        padding: 10px;
+        font-size: 14px;
+        line-height: 14px;
+        text-decoration: none;
+        text-transform: uppercase;
+        transition: $animation;
+
+        &:hover {
+            color: $accent;
+        }
+    }
+
     .danger {
+        margin-left: auto;
+
         div {
             display: flex;
             align-items: center;

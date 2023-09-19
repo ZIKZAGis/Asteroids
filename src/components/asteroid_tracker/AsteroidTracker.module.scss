@@ -6,18 +6,95 @@
 
 .wrapper > div {
     position: absolute;
-    top: 20px;
-    right: 50px;
+    top: 0;
+    right: 0;
 }
 
-.wrapper > div > div {
+.inner_wrapper {
     z-index: 1;
-    text-align: center;
-    width: 200px;
-    height: fit-content;
-    max-height: 70%;
-    overflow-y: scroll;
+    width: 220px;
     position: fixed;
     transform: translateX(-100%);
-    border: 1px solid $accent;
+    border-radius: 20px;
+    padding: 20px;
+    background-color: $gray;
+
+    p {
+        text-align: center;
+        font-weight: bold;
+        margin: 0 0 15px 0;
+    }
+}
+
+.tracked {
+    margin-bottom: 15px;
+    max-height: 30vh;
+    overflow-y: scroll;
+
+    div {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: 1px solid $bg-color;
+    }
+
+    a {
+        text-align: left;
+        color: $text-color;
+        text-decoration: none;
+        width: 100%;
+        font-size: 16px;
+        font-weight: normal;
+        margin: 0;
+        padding: 5px 0;
+        transition: $animation;
+
+        &:hover {
+            color: $accent;
+        }
+    }
+
+    button {
+        font-size: 24px;
+        display: flex;
+        justify-content: center;
+        background-color: transparent;
+        border: none;
+        color: $accent;
+        transition: $animation;
+        cursor: pointer;
+
+        &:hover {
+            color: red;
+        }
+    }
+}
+
+.bottom {
+    button, div {
+        box-sizing: border-box;
+        padding: 10px;
+        font-size: 16px;
+        line-height: 16px;
+        height: 40px;
+        border-radius: 10px;
+        color: $text-color;
+    }
+
+    div {
+        text-align: center;
+        background-color: darken($gray, 5);
+    }
+
+    button {
+        display: block;
+        width: 100%;
+        border: none;
+        background-color: $accent;
+        transition: $animation;
+
+        &:hover {
+            background-color: darken($accent, 15);
+        }
+    }
 }

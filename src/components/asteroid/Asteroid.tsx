@@ -8,6 +8,7 @@ type PropsType = {
     asteroid: AsteroidType
     toggle: (asteroid: AsteroidType) => void
     check: (asteroid: AsteroidType) => boolean
+    key: string
 }
 
 const getDiameter = (asteroid: AsteroidType) => {
@@ -33,7 +34,7 @@ const getNearest = (dateArr: CloseApproachDataType[]) => {
 const Asteroid = ({asteroid, toggle, check}: PropsType) => {
     return (
         <>
-            <div key={asteroid.id} className={styles.wrapper}>
+            <div className={styles.wrapper}>
                 <div className={styles.name}>{asteroid.name_limited ? asteroid.name_limited : asteroid.name}</div>
                 <div className={styles.data}>
                     <div className={styles.distance}>
@@ -59,7 +60,10 @@ const Asteroid = ({asteroid, toggle, check}: PropsType) => {
                     <button 
                         onClick={() => toggle(asteroid)}
                         style={check(asteroid) ? {backgroundColor: 'rgb(37,15,0)', opacity: '0.8'} : {backgroundColor: '#232526'}}
-                    >{check(asteroid) ? 'Remove track' : 'Add track'}</button>
+                    >
+                        {check(asteroid) ? 'Remove track' : 'Add track'}
+                    </button>
+                    <a href={asteroid.nasa_jpl_url}>More info</a>
                     <div className={styles.danger} style={asteroid.is_potentially_hazardous_asteroid ? {color: 'red', fontWeight: 'bold'} : {color: 'white', opacity: 0.2}}>
                         {asteroid.is_potentially_hazardous_asteroid ? 
                             <div>

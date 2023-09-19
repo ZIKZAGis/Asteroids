@@ -29,13 +29,14 @@ const AsteroidsPage = () => {
                 </div>
             </div>
             {error && <ErrorMessage error={error}/>}
-            <AsteroidTracker/>
+            <AsteroidTracker remove={toggleTrackHandler}/>
             <div className={styles.asteroids}>
                 {asteroids && asteroids.map((asteroid) => (
                     <Asteroid 
                         asteroid={asteroid} 
                         toggle={toggleTrackHandler} 
                         check={checkAdded}
+                        key={asteroid.id}
                     />
                 ))}
             </div>
