@@ -13,7 +13,7 @@
         width: 100%;
         padding-top: 40%;
     }
-    iframe, img {
+    iframe {
         position: absolute;
         display: block;
         left: 0;
@@ -22,8 +22,24 @@
         height: 100%;
     }
 
-    img {
+    .apod_image {
+        position: absolute;
+        display: block;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
         object-fit: contain;
+        opacity: 0;
+ 
+        -webkit-transition: opacity 1s;
+        -moz-transition: opacity 1s;
+        -ms-transition: opacity 1s;
+        transition: opacity 1s;
+    }
+
+    .apod_image_loaded {
+        opacity: 1;
     }
 }
 

@@ -6,7 +6,9 @@ import styles from './Apod.module.scss'
 const Apod = () => {
     const {apod, error, loading} = useApod()
 
-    console.log(apod)
+    const imgLoaded = (e: React.SyntheticEvent<HTMLImageElement>) => {
+        e.currentTarget.classList.add(styles.apod_image_loaded)
+    }
 
     return (
         <div className={styles.container}>
@@ -20,7 +22,12 @@ const Apod = () => {
                             // eslint-disable-next-line jsx-a11y/iframe-has-title
                             <iframe width='600'height='400' src={apod.url} frameBorder='0' allowFullScreen/>
                             :
-                            <img src={apod.url} alt="Apod" />
+                            <img 
+                                className={styles.apod_image} 
+                                src={apod.url} 
+                                alt="Apod" 
+                                onLoad={(e) => imgLoaded(e)}
+                            />
                         }
                     </div>
                     <span> Date: {apod.date}</span>
