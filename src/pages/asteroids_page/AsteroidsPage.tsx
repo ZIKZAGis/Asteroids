@@ -29,8 +29,8 @@ const AsteroidsPage = () => {
                 </div>
             </div>
             {error && <ErrorMessage error={error}/>}
-            <AsteroidTracker remove={toggleTrackHandler}/>
-            <div className={styles.asteroids}>
+            {asteroids && <AsteroidTracker remove={toggleTrackHandler}/>}
+            <div className={styles.asteroids} style={asteroids ? {opacity: '1'} : {opacity: '0'}}>
                 {asteroids && asteroids.map((asteroid) => (
                     <Asteroid 
                         asteroid={asteroid} 

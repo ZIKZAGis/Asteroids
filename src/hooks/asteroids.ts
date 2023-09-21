@@ -8,8 +8,7 @@ export const useAsteroids = () => {
     const [asteroids, setAsteroids] = useState<AsteroidType[] | null> (null)
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState('')
-    
-
+ 
     const dispatch = useAppDispatch()
     
     const link = useAppSelector(state => state.asteroid.asteroidsLink)

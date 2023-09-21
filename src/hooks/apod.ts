@@ -28,6 +28,7 @@ export const useApod = () => {
             const error = e as AxiosError
             setLoading(false)
             setError(error.message)
+            console.log(error)
         }
     }
 

@@ -44,7 +44,8 @@
     margin: 0 auto;
     position: relative;
     text-align: center;
-    order: 1;
+    z-index: 2;
+    transition: $animation;
 }
 
 .nav_button {
@@ -134,4 +135,3 @@
       transform: rotate(360deg);
     }
 }
-
