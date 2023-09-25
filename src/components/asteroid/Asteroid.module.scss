@@ -149,3 +149,36 @@
         }
     }
 }
+
+@media (max-width: $mobile) {
+    .wrapper {
+        width: 350px;
+    }
+
+    .diameter_icon {
+        width: 20px;
+        height: 20px;
+    }
+
+    .distance {
+        p {
+            font-size: 14px;
+        }
+    }
+
+    .diameter {
+        p {
+            font-size: 14px;
+        }
+    }
+
+    .bottom {
+        button, a {
+            font-size: 12px;
+        }
+    }
+
+    .danger {
+        font-size: 14px;
+    }
+}

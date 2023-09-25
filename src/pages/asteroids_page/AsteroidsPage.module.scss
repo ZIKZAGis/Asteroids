@@ -44,7 +44,7 @@
     margin: 0 auto;
     position: relative;
     text-align: center;
-    z-index: 2;
+    z-index: 1;
     transition: $animation;
 }
 
@@ -101,9 +101,19 @@
     }
 }
 
-@media (max-width: (1920px)) {
+@media (max-width: 1920px) {
     .earth {
         left: 0;
+    }
+}
+
+@media (max-width: 1160px) {
+    .wrapper {
+        margin-bottom: 130px;
+    }
+
+    .nav_button {
+        bottom: 50%;
     }
 }
 
@@ -119,11 +129,30 @@
 
 @media (max-width: ($mobile - 1)) {
     .wrapper {
+        margin-top: 80px;
         padding: 0 20px;
     }
 
     .earth {
         left: -50%;
+    }
+
+    .nav_button {
+        button:first-child {
+            left: -30px;
+    
+            &:hover {
+                left: -33px;
+            }
+        }
+    
+        button:last-child {
+            right: -30px;
+    
+            &:hover {
+                right: -33px;
+            }
+        }
     }
 }
 

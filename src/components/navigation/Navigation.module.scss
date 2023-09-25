@@ -61,10 +61,24 @@
 }
 
 @media (max-width: $mobile) {
+    .wrapper {
+        box-sizing: border-box;
+        width: 100%;
+        position: fixed;
+        background-color: $bg-color;
+    }
+
     .links {
         position: absolute;
+        display: flex;
+        width: fit-content;
+        text-align: right;
+        background-color: $bg-color;
+        flex-direction: column;
         right: -100%;
         top: 80px;
+        padding: 0 20px;
+        border-radius: 0 0 0 20px;
         transition: $animation;
     }
 
