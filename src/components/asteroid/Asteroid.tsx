@@ -61,7 +61,7 @@ const Asteroid = ({asteroid, toggle, check}: PropsType) => {
                         onClick={() => toggle(asteroid)}
                         style={check(asteroid) ? {backgroundColor: 'rgb(37,15,0)', opacity: '0.8'} : {backgroundColor: '#232526'}}
                     >
-                        {check(asteroid) ? 'Remove track' : 'Add track'}
+                        {check(asteroid) ? 'Delete track' : 'Add track'}
                     </button>
                     <a href={asteroid.nasa_jpl_url}>More info</a>
                     <div className={styles.danger} style={asteroid.is_potentially_hazardous_asteroid ? {color: 'red', fontWeight: 'bold'} : {color: 'white', opacity: 0.2}}>

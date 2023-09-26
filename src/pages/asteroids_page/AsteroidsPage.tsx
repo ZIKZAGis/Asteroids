@@ -6,6 +6,7 @@ import Button from '../../components/button/Button'
 import styles from './AsteroidsPage.module.scss'
 import earth from './../../earth.webp'
 import AsteroidTracker from '../../components/asteroid_tracker/AsteroidTracker'
+import {AiOutlineArrowLeft, AiOutlineArrowRight} from 'react-icons/ai'
 
 const AsteroidsPage = () => {
     const {
@@ -43,8 +44,8 @@ const AsteroidsPage = () => {
             {loading && <Loader/>}
             {asteroids &&
                 <div className={styles.nav_button}>
-                    <Button fn={prevLinkHandler} disabled={prevLink ? false : true} description='Prev'/>
-                    <Button fn={nextLinkHandler} disabled={nextLink ? false : true} description='Next'/>
+                    <Button fn={prevLinkHandler} disabled={prevLink ? false : true}><AiOutlineArrowLeft/></Button>
+                    <Button fn={nextLinkHandler} disabled={nextLink ? false : true}><AiOutlineArrowRight/></Button>
                 </div>
             }
         </div>
