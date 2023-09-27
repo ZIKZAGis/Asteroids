@@ -1,4 +1,4 @@
-import {useState} from 'react'
+import {useEffect, useState} from 'react'
 import Button from '../../components/button/Button'
 import { useAppSelector } from "../../hooks/appHooks"
 import styles from './AsteroidTracker.module.scss'
@@ -15,6 +15,10 @@ const AsteroidTracker = ({remove}: PropsType) => {
         setIsOpen(!isOpen)
     }
     const trackedAsteroids = useAppSelector(state => state.asteroid.traceable)
+
+    useEffect(() => {
+        (trackedAsteroids.length < 1) && setIsOpen(false)
+    }, [trackedAsteroids.length])
 
     return (
         <div className={styles.wrapper}>

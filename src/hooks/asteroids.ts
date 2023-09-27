@@ -47,8 +47,9 @@ export const useAsteroids = () => {
             const response = await axios.get(link)
             setAsteroids(response.data.near_earth_objects)
 
-            response.data.links.next ? setNextLink(response.data.links.next) : setNextLink('')
-            response.data.links.prev ? setPrevLink(response.data.links.prev) : setPrevLink('')
+            response.data.links.next ? setNextLink(response.data.links.next.replace(/http/gi, 'https')) : setNextLink('')
+            response.data.links.prev ? setPrevLink(response.data.links.next.replace(/http/gi, 'https')) : setPrevLink('')
+
             console.log(response.data)
             
             setLoading(false)

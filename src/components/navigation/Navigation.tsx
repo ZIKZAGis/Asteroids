@@ -1,15 +1,17 @@
 import { Link } from "react-router-dom"
 import styles from './Navigation.module.scss'
 import {SiNasa} from 'react-icons/si'
+import {useState } from "react"
 
 const Navigation = () => {
+    const [isMenuOpen, setIsMenuOpen] = useState(false)
 
-    const openMenu = (e: React.SyntheticEvent<HTMLButtonElement>) => {
-        e.currentTarget.classList.toggle(styles.toggle_open)
+    const menuHandler = () => {
+        setIsMenuOpen(!isMenuOpen)
     }
 
     return (
-        <div className={styles.wrapper}>
+        <div className={styles.wrapper} id='nav'>
             <a href="https://api.nasa.gov/">
                 <SiNasa/> 
                 <span>
@@ -17,7 +19,7 @@ const Navigation = () => {
                 </span> 
             </a>
             <nav>
-                <button type='button' className={styles.toggle} onClick={(e) => openMenu(e)}>
+                <button type='button' className={`${styles.toggle} ${isMenuOpen && styles.toggle_open}`} onClick={() => menuHandler()}>
                     <div/>
                 </button>
                 <div className={styles.links}>
