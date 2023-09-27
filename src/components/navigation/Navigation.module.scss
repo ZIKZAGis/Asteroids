@@ -44,13 +44,21 @@
             color: $accent;
         }
     }
+
+    .link_active {
+        color: $accent;
+        opacity: 0.5;
+        text-decoration: none;
+        transition: $animation;
+    }
 }
 
 .links {
     display: flex;
 }
 
-.link {
+.link, 
+.link_active {
     display: block;
     font-weight: bold;
     padding: 30px 15px;
@@ -88,9 +96,16 @@
         flex-direction: column;
         right: -100%;
         top: 70px;
-        padding: 0 20px;
+        padding: 0 20px 20px 20px;
         border-radius: 0 0 0 20px;
         transition: $animation;
+    }
+
+    .link,
+    .link_active {
+        padding: 20px;
+        font-size: 18px;
+        text-transform: uppercase;
     }
 
     .toggle {

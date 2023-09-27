@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom"
+import { NavLink } from 'react-router-dom'
 import styles from './Navigation.module.scss'
 import {SiNasa} from 'react-icons/si'
 import {useState } from "react"
@@ -10,8 +10,12 @@ const Navigation = () => {
         setIsMenuOpen(!isMenuOpen)
     }
 
+    const closeMenuHandler = () => {
+        setIsMenuOpen(false)
+    }
+
     return (
-        <div className={styles.wrapper} id='nav'>
+        <div className={styles.wrapper}>
             <a href="https://api.nasa.gov/">
                 <SiNasa/> 
                 <span>
@@ -19,12 +23,12 @@ const Navigation = () => {
                 </span> 
             </a>
             <nav>
-                <button type='button' className={`${styles.toggle} ${isMenuOpen && styles.toggle_open}`} onClick={() => menuHandler()}>
+                <button type='button' className={`${styles.toggle} ${isMenuOpen && styles.toggle_open}`} onClick={menuHandler}>
                     <div/>
                 </button>
                 <div className={styles.links}>
-                    <Link className={styles.link} to='/'>Asteroids</Link>
-                    <Link className={styles.link} to='/apod'>Astronomy Picture of the Day</Link>
+                    <NavLink className={({isActive}) => (isActive ? styles.link_active : styles.link)} onClick={closeMenuHandler} to='/'>Asteroids</NavLink>
+                    <NavLink className={({isActive}) => (isActive ? styles.link_active : styles.link)} onClick={closeMenuHandler} to='/apod'>Astronomy Picture of the Day</NavLink>
                 </div>
             </nav>
         </div>
