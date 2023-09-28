@@ -49,8 +49,6 @@ export const useAsteroids = () => {
 
             response.data.links.next ? setNextLink(response.data.links.next.replace(/http/gi, 'https')) : setNextLink('')
             response.data.links.prev ? setPrevLink(response.data.links.next.replace(/http/gi, 'https')) : setPrevLink('')
-
-            console.log(response.data)
             
             setLoading(false)
         } catch (e: unknown) {
