@@ -49,7 +49,7 @@ const AsteroidTracker = ({remove}: PropsType) => {
                                 `${trackedAsteroids.length} tracked`}
                             />
                             :
-                            <div>nothing traceable</div>
+                            <div>No traced asteroids</div>
                         }
                     </div>
                 </div>
